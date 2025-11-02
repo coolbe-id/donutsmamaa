@@ -41,6 +41,12 @@
     --white: #ffffff;
     --shadow: 0 4px 20px rgba(0,0,0,0.1);
     --radius: 20px;
+    --ios-blue: #007AFF;
+    --ios-green: #34C759;
+    --ios-orange: #FF9500;
+    --ios-red: #FF3B30;
+    --ios-purple: #AF52DE;
+    --gradient: linear-gradient(135deg, #e91e63, #8e24aa);
   }
 
   /* Reset and base styles */
@@ -65,6 +71,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Fallback for older browsers */
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iOS */
+    padding-bottom: 100px; /* Space for bottom nav */
   }
 
   /* Splash Screen */
@@ -181,7 +188,7 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background-image: url('https://i.ibb.co.com/xKyV50bF/images-29-removebg-preview.png');
+    background-image: url('https://i.ibb.co.com/67HFsrNV/images-29-removebg-preview.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.7;
@@ -366,6 +373,7 @@
     padding: 10px 20px;
     box-shadow: var(--shadow);
     box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Fallback */
+    z-index: 1000;
   }
 
   .bottom-item {
@@ -541,6 +549,84 @@
     box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
   }
 
+  /* Popular Items Section */
+  .popular-section {
+    margin-bottom: 40px;
+  }
+
+  .popular-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    text-align: center;
+  }
+
+  .popular-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--light-pink);
+    scrollbar-color: #e91e63 #fce4ec; /* Fallback */
+  }
+
+  .popular-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .popular-scroll::-webkit-scrollbar-track {
+    background: var(--light-pink);
+    background: #fce4ec; /* Fallback */
+    border-radius: 10px;
+  }
+
+  .popular-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    background: #e91e63; /* Fallback */
+    border-radius: 10px;
+  }
+
+  .popular-item {
+    min-width: 150px;
+    background: var(--white);
+    background: #ffffff; /* Fallback */
+    border-radius: var(--radius);
+    border-radius: 20px; /* Fallback */
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Fallback */
+    transition: all 0.3s ease;
+  }
+
+  .popular-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .popular-img {
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .popular-content {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .popular-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+  }
+
+  .popular-price {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
   /* Box Selection */
   .section-title {
     font-size: 1.8rem;
@@ -567,11 +653,25 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Fallback */
     transition: all 0.3s ease;
     text-align: center;
+    position: relative;
   }
 
   .box-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--ios-red);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 1;
   }
 
   .box-card h3 {
@@ -590,6 +690,18 @@
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 15px;
+  }
+
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+    margin-right: 5px;
+  }
+
+  .discount-price {
+    color: var(--ios-red);
+    font-weight: 700;
   }
 
   .variant-selector {
@@ -947,6 +1059,21 @@
     max-height: 200px;
   }
 
+  .faq-article-link {
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .faq-article-link:hover {
+    text-decoration: underline;
+  }
+
   /* Cart Page */
   .cart-container {
     background: var(--white);
@@ -1149,6 +1276,12 @@
     font-size: 0.9rem;
   }
 
+  .history-time {
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+
   .history-status {
     background: var(--light-pink);
     background: #fce4ec; /* Fallback */
@@ -1226,6 +1359,34 @@
 
   .search-results-count {
     color: #666;
+  }
+
+  .search-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .search-filter {
+    background: var(--white);
+    background: #ffffff; /* Fallback */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .search-filter:hover, .search-filter.active {
+    background: var(--accent);
+    background: #e91e63; /* Fallback */
+    color: white;
+    border-color: var(--accent);
+    border-color: #e91e63; /* Fallback */
   }
 
   .search-results-grid {
@@ -1547,6 +1708,171 @@
     color: #e91e63; /* Fallback */
   }
 
+  /* Article Page */
+  .article-container {
+    background: var(--white);
+    background: #ffffff; /* Fallback */
+    border-radius: var(--radius);
+    border-radius: 20px; /* Fallback */
+    padding: 20px;
+    box-shadow: var(--shadow);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Fallback */
+    margin-bottom: 20px;
+  }
+
+  .article-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--gray);
+    border-bottom: 1px solid #e9e9e9; /* Fallback */
+  }
+
+  .article-title {
+    font-size: 1.8rem;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    margin-bottom: 10px;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 15px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .article-content {
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .article-content p {
+    margin-bottom: 15px;
+  }
+
+  .article-content h3 {
+    margin: 20px 0 10px;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+  }
+
+  .article-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  .article-content li {
+    margin-bottom: 5px;
+  }
+
+  .back-to-faq {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  .back-to-faq:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--white);
+    background: #ffffff; /* Fallback */
+    border-radius: var(--radius);
+    border-radius: 20px; /* Fallback */
+    padding: 20px;
+    box-shadow: var(--shadow);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Fallback */
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-size: 1.2rem;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    margin-bottom: 15px;
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .footer-social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--light-pink);
+    background: #fce4ec; /* Fallback */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    font-size: 18px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .footer-social-icon:hover {
+    background: var(--accent);
+    background: #e91e63; /* Fallback */
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .footer-support {
+    margin-top: 15px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .footer-support a {
+    color: var(--accent);
+    color: #e91e63; /* Fallback */
+    text-decoration: none;
+  }
+
+  .footer-support a:hover {
+    text-decoration: underline;
+  }
+
+  /* Store Hours Notification */
+  .store-hours-notification {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ios-orange);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Fallback */
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    max-width: 90%;
+  }
+
+  .store-hours-notification.show {
+    display: flex;
+  }
+
+  .store-hours-notification i {
+    font-size: 1.2rem;
+  }
+
   /* Responsive rules */
   @media (max-width: 768px) {
     .sidebar {
@@ -1605,6 +1931,18 @@
       width: 35px;
       height: 35px;
       font-size: 16px;
+    }
+    
+    .history-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .search-results-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .payment-methods {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -1687,6 +2025,12 @@
         <i class="fab fa-whatsapp"></i>
       </a>
     </div>
+  </div>
+
+  <!-- Store Hours Notification -->
+  <div class="store-hours-notification" id="store-hours-notification">
+    <i class="fas fa-clock"></i>
+    <span id="store-hours-message">Toko belum buka</span>
   </div>
 
   <!-- Floating Search Capsule -->
@@ -1775,16 +2119,97 @@
         </div>
       </div>
 
+      <!-- Popular Variants Section -->
+      <div class="popular-section">
+        <h2 class="section-title">Varian Terlaris</h2>
+        <div class="popular-scroll">
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/3YBhVvq8/depositphotos-254106252-stock-photo-homemade-green-tea-matcha-donuts.webp');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Snow Matcha</div>
+              <div class="popular-price">Rp 5.500</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/QF626jSS/IMG-8620-2.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Stroberry Smooth</div>
+              <div class="popular-price">Rp 5.500</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/HDT9hqH3/donat-keju-foto-resep-utama.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Snow Cheese</div>
+              <div class="popular-price">Rp 5.500</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/C3RhFDDw/images-20.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">White Snow</div>
+              <div class="popular-price">Rp 5.500</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/kV7Tf3Jn/images-17.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Dark Moon</div>
+              <div class="popular-price">Rp 5.500</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Boxes Section -->
+      <div class="popular-section">
+        <h2 class="section-title">Box Terlaris</h2>
+        <div class="popular-scroll">
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/s9MmGZKw/images-25.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Mini Box</div>
+              <div class="popular-price">Rp 35.000</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/mCQj2W13/images-26.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Medium Box</div>
+              <div class="popular-price">Rp 68.000</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/jkxrsvJw/images-27.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Big Box</div>
+              <div class="popular-price">Rp 101.000</div>
+            </div>
+          </div>
+          <div class="popular-item">
+            <div class="popular-img" style="background-image: url('https://i.ibb.co.com/nMSXQs7Z/images-28.jpg');"></div>
+            <div class="popular-content">
+              <div class="popular-name">Party Box</div>
+              <div class="popular-price">Rp 134.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Box Selection -->
       <div class="box-selection">
         <h2 class="section-title">Pilih Box Donatmu</h2>
         <div class="box-container">
           <!-- Mini Box -->
           <div class="box-card" data-box="mini" data-base-price="35000" data-base-count="6" data-unit-price="5500">
+            <div class="discount-badge" id="discount-mini" style="display: none;">Hemat 5%</div>
             <h3>Mini Box</h3>
             <div class="box-info">
               <span>Isi: <span class="box-count">6</span> donat</span>
-              <span class="box-price">Rp 35.000</span>
+              <span class="box-price">
+                <span class="original-price" id="original-price-mini">Rp 35.000</span>
+                <span class="discount-price" id="discount-price-mini" style="display: none;">Rp 33.250</span>
+              </span>
             </div>
             
             <div class="variant-selector">
@@ -1848,10 +2273,14 @@
           
           <!-- Medium Box -->
           <div class="box-card" data-box="medium" data-base-price="68000" data-base-count="12" data-unit-price="5500">
+            <div class="discount-badge" id="discount-medium" style="display: none;">Hemat 5%</div>
             <h3>Medium Box</h3>
             <div class="box-info">
               <span>Isi: <span class="box-count">12</span> donat</span>
-              <span class="box-price">Rp 68.000</span>
+              <span class="box-price">
+                <span class="original-price" id="original-price-medium">Rp 68.000</span>
+                <span class="discount-price" id="discount-price-medium" style="display: none;">Rp 64.600</span>
+              </span>
             </div>
             
             <div class="variant-selector">
@@ -1915,10 +2344,14 @@
           
           <!-- Big Box -->
           <div class="box-card" data-box="big" data-base-price="101000" data-base-count="18" data-unit-price="5500">
+            <div class="discount-badge" id="discount-big" style="display: none;">Hemat 5%</div>
             <h3>Big Box</h3>
             <div class="box-info">
               <span>Isi: <span class="box-count">18</span> donat</span>
-              <span class="box-price">Rp 101.000</span>
+              <span class="box-price">
+                <span class="original-price" id="original-price-big">Rp 101.000</span>
+                <span class="discount-price" id="discount-price-big" style="display: none;">Rp 95.950</span>
+              </span>
             </div>
             
             <div class="variant-selector">
@@ -1982,10 +2415,14 @@
           
           <!-- Party Box -->
           <div class="box-card" data-box="party" data-base-price="134000" data-base-count="24" data-unit-price="5500">
+            <div class="discount-badge" id="discount-party" style="display: none;">Hemat 5%</div>
             <h3>Party Box</h3>
             <div class="box-info">
               <span>Isi: <span class="box-count">24</span> donat</span>
-              <span class="box-price">Rp 134.000</span>
+              <span class="box-price">
+                <span class="original-price" id="original-price-party">Rp 134.000</span>
+                <span class="discount-price" id="discount-price-party" style="display: none;">Rp 127.300</span>
+              </span>
             </div>
             
             <div class="variant-selector">
@@ -2111,6 +2548,9 @@
           </div>
           <div class="faq-answer">
             <p>Ya, semua donat kami terbuat dari bahan-bahan halal dan bersertifikat halal.</p>
+            <a href="#" class="faq-article-link" data-article="halal">
+              Baca artikel lengkap <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
         
@@ -2121,6 +2561,9 @@
           </div>
           <div class="faq-answer">
             <p>Donat kami bisa bertahan hingga 2 hari pada suhu ruangan dan 5 hari jika disimpan di kulkas.</p>
+            <a href="#" class="faq-article-link" data-article="ketahanan">
+              Baca artikel lengkap <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
         
@@ -2131,6 +2574,9 @@
           </div>
           <div class="faq-answer">
             <p>Saat ini kami hanya melayani pengiriman di wilayah Cianjur dan sekitarnya.</p>
+            <a href="#" class="faq-article-link" data-article="pengiriman">
+              Baca artikel lengkap <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
         
@@ -2141,6 +2587,9 @@
           </div>
           <div class="faq-answer">
             <p>Untuk acara besar, silakan hubungi kami langsung melalui WhatsApp minimal 3 hari sebelum acara.</p>
+            <a href="#" class="faq-article-link" data-article="acara-besar">
+              Baca artikel lengkap <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -2148,6 +2597,28 @@
       <!-- Ad Banner 3 -->
       <div class="ad-banner">
         <img src="https://donutsmamaa.vercel.app/iklan/DonutsByMama_20251102_102628_0000.gif" alt="Iklan Mama Donat" class="ad-gif">
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-title">Hubungi Kami</div>
+        <div class="footer-social">
+          <a href="https://instagram.com/mamadonat" target="_blank" class="footer-social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com/mamadonat" target="_blank" class="footer-social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://wa.me/6285717377589" target="_blank" class="footer-social-icon">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:admin@mamadonat.com" target="_blank" class="footer-social-icon">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <div class="footer-support">
+          Butuh bantuan? Hubungi <a href="mailto:admin@mamadonat.com">admin@mamadonat.com</a>
+        </div>
       </div>
     </div>
 
@@ -2198,6 +2669,14 @@
           <div class="search-results-count" id="search-results-count">0 hasil ditemukan</div>
         </div>
         
+        <div class="search-filters">
+          <div class="search-filter active" data-filter="all">Semua</div>
+          <div class="search-filter" data-filter="variant">Varian</div>
+          <div class="search-filter" data-filter="box">Box</div>
+          <div class="search-filter" data-filter="price-low">Harga Terendah</div>
+          <div class="search-filter" data-filter="price-high">Harga Tertinggi</div>
+        </div>
+        
         <div class="search-results-grid" id="search-results-grid">
           <!-- Search results will be dynamically added here -->
         </div>
@@ -2206,6 +2685,13 @@
           <i class="fas fa-search"></i>
           <p>Tidak ada hasil yang ditemukan</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Article Page -->
+    <div class="page" id="article-page">
+      <div class="article-container" id="article-container">
+        <!-- Article content will be dynamically added here -->
       </div>
     </div>
   </div>
@@ -2350,21 +2836,24 @@
     const noResults = document.getElementById('no-results');
     const deliveryEstimate = document.getElementById('delivery-estimate');
     const splashScreen = document.getElementById('splash-screen');
+    const storeHoursNotification = document.getElementById('store-hours-notification');
+    const storeHoursMessage = document.getElementById('store-hours-message');
+    const articleContainer = document.getElementById('article-container');
     
     // Product data for search
     const products = [
-      { name: 'Mini Box', price: 35000, description: 'Isi 6 donat dengan varian pilihan', image: 'https://i.ibb.co.com/s9MmGZKw/images-25.jpg' },
-      { name: 'Medium Box', price: 68000, description: 'Isi 12 donat dengan varian pilihan', image: 'https://i.ibb.co.com/mCQj2W13/images-26.jpg' },
-      { name: 'Big Box', price: 101000, description: 'Isi 18 donat dengan varian pilihan', image: 'https://i.ibb.co.com/jkxrsvJw/images-27.jpg' },
-      { name: 'Party Box', price: 134000, description: 'Isi 24 donat dengan varian pilihan', image: 'https://i.ibb.co.com/nMSXQs7Z/images-28.jpg' },
-      { name: 'Snow Matcha', price: 5500, description: 'Donat dengan rasa matcha lezat', image: 'https://i.ibb.co.com/3YBhVvq8/depositphotos-254106252-stock-photo-homemade-green-tea-matcha-donuts.webp' },
-      { name: 'Stroberry Smooth', price: 5500, description: 'Donat dengan topping stroberry segar', image: 'https://i.ibb.co.com/QF626jSS/IMG-8620-2.jpg' },
-      { name: 'Snow Cheese', price: 5500, description: 'Donat dengan taburan keju gurih', image: 'https://i.ibb.co.com/HDT9hqH3/donat-keju-foto-resep-utama.jpg' },
-      { name: 'White Snow', price: 5500, description: 'Donat dengan topping putih lembut', image: 'https://i.ibb.co.com/C3RhFDDw/images-20.jpg' },
-      { name: 'Dark Moon', price: 5500, description: 'Donat dengan topping dark coklat', image: 'https://i.ibb.co.com/kV7Tf3Jn/images-17.jpg' },
-      { name: 'Black Almond', price: 5500, description: 'Donat dengan taburan almond', image: 'https://i.ibb.co.com/cX6v6mFh/resize-IMG-20230707-WA0022.jpg' },
-      { name: 'Black Cover', price: 5500, description: 'Donat dengan taburan coklat bubuk yang di campur Oreo', image: 'https://i.ibb.co.com/kgSjC5tQ/images-18.jpg' },
-      { name: 'Red Velvet', price: 5500, description: 'Donat dengan saus khas yang membuat orang tergoda', image: 'https://i.ibb.co.com/zzTSpcX/images-19.jpg' }
+      { name: 'Mini Box', price: 35000, description: 'Isi 6 donat dengan varian pilihan', image: 'https://i.ibb.co.com/s9MmGZKw/images-25.jpg', type: 'box' },
+      { name: 'Medium Box', price: 68000, description: 'Isi 12 donat dengan varian pilihan', image: 'https://i.ibb.co.com/mCQj2W13/images-26.jpg', type: 'box' },
+      { name: 'Big Box', price: 101000, description: 'Isi 18 donat dengan varian pilihan', image: 'https://i.ibb.co.com/jkxrsvJw/images-27.jpg', type: 'box' },
+      { name: 'Party Box', price: 134000, description: 'Isi 24 donat dengan varian pilihan', image: 'https://i.ibb.co.com/nMSXQs7Z/images-28.jpg', type: 'box' },
+      { name: 'Snow Matcha', price: 5500, description: 'Donat dengan rasa matcha lezat', image: 'https://i.ibb.co.com/3YBhVvq8/depositphotos-254106252-stock-photo-homemade-green-tea-matcha-donuts.webp', type: 'variant' },
+      { name: 'Stroberry Smooth', price: 5500, description: 'Donat dengan topping stroberry segar', image: 'https://i.ibb.co.com/QF626jSS/IMG-8620-2.jpg', type: 'variant' },
+      { name: 'Snow Cheese', price: 5500, description: 'Donat dengan taburan keju gurih', image: 'https://i.ibb.co.com/HDT9hqH3/donat-keju-foto-resep-utama.jpg', type: 'variant' },
+      { name: 'White Snow', price: 5500, description: 'Donat dengan topping putih lembut', image: 'https://i.ibb.co.com/C3RhFDDw/images-20.jpg', type: 'variant' },
+      { name: 'Dark Moon', price: 5500, description: 'Donat dengan topping dark coklat', image: 'https://i.ibb.co.com/kV7Tf3Jn/images-17.jpg', type: 'variant' },
+      { name: 'Black Almond', price: 5500, description: 'Donat dengan taburan almond', image: 'https://i.ibb.co.com/cX6v6mFh/resize-IMG-20230707-WA0022.jpg', type: 'variant' },
+      { name: 'Black Cover', price: 5500, description: 'Donat dengan taburan coklat bubuk yang di campur Oreo', image: 'https://i.ibb.co.com/kgSjC5tQ/images-18.jpg', type: 'variant' },
+      { name: 'Red Velvet', price: 5500, description: 'Donat dengan saus khas yang membuat orang tergoda', image: 'https://i.ibb.co.com/zzTSpcX/images-19.jpg', type: 'variant' }
     ];
     
     // Variants data with images
@@ -2378,6 +2867,103 @@
       { name: 'Black Cover', image: 'https://i.ibb.co.com/kgSjC5tQ/images-18.jpg' },
       { name: 'Red Velvet', image: 'https://i.ibb.co.com/zzTSpcX/images-19.jpg' }
     ];
+
+    // Article data
+    const articles = {
+      halal: {
+        title: 'Sertifikasi Halal Mama Donat',
+        date: '15 Oktober 2023',
+        content: `
+          <p>Mama Donat sangat memperhatikan kehalalan produk yang kami jual. Semua donat kami telah mendapatkan sertifikasi halal dari LPPOM MUI dengan nomor sertifikat ID-1234567890.</p>
+          <h3>Bahan-bahan Halal</h3>
+          <p>Kami menggunakan bahan-bahan berkualitas yang telah terjamin kehalalannya:</p>
+          <ul>
+            <li>Tepung terigu premium</li>
+            <li>Ragi halal</li>
+            <li>Susu dan produk susu halal</li>
+            <li>Coklat dan topping halal</li>
+            <li>Pewarna dan perasa alami</li>
+          </ul>
+          <h3>Proses Produksi</h3>
+          <p>Seluruh proses produksi donat kami dilakukan di dapur yang bersih dan terpisah dari bahan non-halal. Kami juga memastikan semua peralatan yang digunakan hanya untuk produk halal.</p>
+          <p>Kami berkomitmen untuk menyajikan donat yang tidak hanya lezat, tetapi juga aman dan halal untuk dikonsumsi oleh seluruh keluarga.</p>
+        `
+      },
+      ketahanan: {
+        title: 'Cara Menyimpan Donat Agar Awet',
+        date: '20 Oktober 2023',
+        content: `
+          <p>Donat Mama Donat terbuat dari bahan-bahan segar tanpa pengawet, sehingga memerlukan penanganan khusus agar tetap awet dan enak dikonsumsi.</p>
+          <h3>Penyimpanan pada Suhu Ruang</h3>
+          <p>Jika Anda berencana mengkonsumsi donat dalam waktu 1-2 hari, simpan pada suhu ruangan dalam wadah kedap udara. Pastikan donat tidak terkena sinar matahari langsung atau kelembaban tinggi.</p>
+          <h3>Penyimpanan di Kulkas</h3>
+          <p>Untuk ketahanan lebih lama (hingga 5 hari), simpan donat di kulkas dengan suhu 4-5°C. Letakkan dalam wadah kedap udara atau bungkus dengan plastik wrap untuk mencegah donat menjadi keras.</p>
+          <h3>Cara Menghangatkan Kembali</h3>
+          <p>Sebelum menyajikan donat yang disimpan di kulkas, keluarkan terlebih dahulu dan diamkan selama 15-20 menit pada suhu ruang. Untuk hasil terbaik, panaskan dengan microwave selama 10-15 detik atau oven dengan suhu rendah selama 5 menit.</p>
+          <p>Dengan cara penyimpanan yang tepat, Anda dapat menikmati kelezatan donat Mama Donat lebih lama!</p>
+        `
+      },
+      pengiriman: {
+        title: 'Area Pengiriman Mama Donat',
+        date: '25 Oktober 2023',
+        content: `
+          <p>Saat ini, Mama Donat melayani pengiriman di wilayah Cianjur dan sekitarnya. Kami berkomitmen untuk memberikan layanan terbaik dengan donat segar sampai ke tangan Anda.</p>
+          <h3>Area Pengiriman</h3>
+          <p>Kami melayani pengiriman ke seluruh kecamatan di Kabupaten Cianjur, termasuk:</p>
+          <ul>
+            <li>Cianjur Kota</li>
+            <li>Cugenang</li>
+            <li>Warung Kondang</li>
+            <li>Sukaresmi</li>
+            <li>Cilaku</li>
+            <li>dan sekitarnya</li>
+          </ul>
+          <h3>Biaya Pengiriman</h3>
+          <p>Biaya pengiriman disesuaikan dengan jarak dan berat pesanan:</p>
+          <ul>
+            <li>Radius 5 km: Rp 10.000</li>
+            <li>Radius 5-10 km: Rp 15.000</li>
+            <li>Radius >10 km: Rp 20.000</li>
+          </ul>
+          <p>Untuk pesanan di atas Rp 150.000, kami memberikan gratis ongkos kirim untuk radius hingga 10 km.</p>
+          <h3>Jam Pengiriman</h3>
+          <p>Pengiriman dilakukan setiap hari pukul 08.00 - 20.00 WIB. Pesanan yang masuk setelah pukul 19.00 WIB akan dikirimkan pada hari berikutnya.</p>
+          <p>Kami terus berupaya untuk memperluas area pengiriman kami. Untuk informasi lebih lanjut, silakan hubungi customer service kami.</p>
+        `
+      },
+      'acara-besar': {
+        title: 'Pemesanan Donat untuk Acara Besar',
+        date: '30 Oktober 2023',
+        content: `
+          <p>Mama Donat siap memenuhi kebutuhan donat untuk berbagai acara besar Anda, mulai dari ulang tahun, arisan, pengajian, hingga acara perusahaan.</p>
+          <h3>Paket Acara Besar</h3>
+          <p>Kami menyediakan beberapa paket khusus untuk acara besar:</p>
+          <ul>
+            <li><strong>Paket Silver</strong>: 50 donat dengan 5 varian pilihan</li>
+            <li><strong>Paket Gold</strong>: 100 donat dengan 8 varian pilihan</li>
+            <li><strong>Paket Platinum</strong>: 200 donat dengan semua varian</li>
+          </ul>
+          <h3>Cara Pemesanan</h3>
+          <p>Untuk pemesanan acara besar, ikuti langkah-langkah berikut:</p>
+          <ol>
+            <li>Hubungi kami minimal 3 hari sebelum acara melalui WhatsApp di nomor 6285717377589</li>
+            <li>Informasikan jenis acara, jumlah tamu, dan tanggal pelaksanaan</li>
+            <li>Pilih paket dan varian donat yang diinginkan</li>
+            <li>Konfirmasi pemesanan dengan melakukan DP 50% dari total harga</li>
+            <li>Pelunasan dilakukan H-1 sebelum acara atau saat pengiriman</li>
+          </ol>
+          <h3>Layanan Tambahan</h3>
+          <p>Untuk acara besar, kami juga menyediakan layanan tambahan:</p>
+          <ul>
+            <li>Custom dekorasi donat sesuai tema acara</li>
+            <li>Personalized message atau nama pada donat</li>
+            <li>Standing donat untuk display acara</li>
+            <li>Petugas khusus untuk memastikan donat tersaji dengan baik</li>
+          </ul>
+          <p>Dengan pengalaman melayani berbagai acara, Mama Donat siap membuat acara Anda menjadi lebih spesial dengan donat lezat kami!</p>
+        `
+      }
+    };
 
     // Current order data
     let currentOrder = {
@@ -2404,6 +2990,12 @@
       big: 18,
       party: 24
     };
+    
+    // Discount data
+    const discountTypes = ['hemat', 'akhir pekan', 'perkenalan', 'irit'];
+    let currentDiscountBox = 'mini';
+    let currentDiscountPercentage = 5;
+    let currentDiscountName = 'hemat';
     
     // Create falling donuts for splash screen
     function createFallingDonuts() {
@@ -2447,6 +3039,82 @@
           splashScreen.style.display = 'none';
         }, 500);
       }, 3000);
+    }
+    
+    // Check store hours and show notification if needed
+    function checkStoreHours() {
+      const now = new Date();
+      const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+      const hours = now.getHours();
+      
+      // Store hours: 08.00 - 21.00 WIB
+      const isOpen = hours >= 8 && hours < 21;
+      
+      if (!isOpen) {
+        if (hours < 8) {
+          storeHoursMessage.textContent = 'Toko belum buka. Buka pukul 08.00 WIB';
+        } else {
+          storeHoursMessage.textContent = 'Toko sudah tutup. Buka kembali pukul 08.00 WIB';
+        }
+        storeHoursNotification.classList.add('show');
+        
+        // Hide notification after 5 seconds
+        setTimeout(() => {
+          storeHoursNotification.classList.remove('show');
+        }, 5000);
+      }
+    }
+    
+    // Initialize discount system
+    function initDiscountSystem() {
+      const now = new Date();
+      const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+      
+      // Only show discount on Saturday (5) and Sunday (0)
+      if (day === 5 || day === 0) {
+        // Get current hour to determine which box gets discount
+        const hour = now.getHours();
+        const boxTypes = ['mini', 'medium', 'big', 'party'];
+        
+        // Change discount box every 6 hours
+        const discountIndex = Math.floor(hour / 6) % 4;
+        currentDiscountBox = boxTypes[discountIndex];
+        
+        // Random discount percentage between 3% and 15%
+        currentDiscountPercentage = Math.floor(Math.random() * 13) + 3;
+        
+        // Random discount name
+        currentDiscountName = discountTypes[Math.floor(Math.random() * discountTypes.length)];
+        
+        // Apply discount to the selected box
+        applyDiscount(currentDiscountBox, currentDiscountPercentage, currentDiscountName);
+      }
+    }
+    
+    // Apply discount to a specific box
+    function applyDiscount(boxType, percentage, name) {
+      const discountBadge = document.getElementById(`discount-${boxType}`);
+      const originalPrice = document.getElementById(`original-price-${boxType}`);
+      const discountPrice = document.getElementById(`discount-price-${boxType}`);
+      
+      if (discountBadge && originalPrice && discountPrice) {
+        // Get base price
+        const basePrice = parseInt(document.querySelector(`[data-box="${boxType}"]`).dataset.basePrice);
+        
+        // Calculate discount price
+        const discountedPrice = Math.round(basePrice * (1 - percentage / 100));
+        
+        // Update UI
+        discountBadge.textContent = `${name.charAt(0).toUpperCase() + name.slice(1)} ${percentage}%`;
+        discountBadge.style.display = 'block';
+        
+        originalPrice.style.display = 'inline';
+        discountPrice.textContent = `Rp ${discountedPrice.toLocaleString('id-ID')}`;
+        discountPrice.style.display = 'inline';
+        
+        // Update data attribute
+        document.querySelector(`[data-box="${boxType}"]`).dataset.discountPrice = discountedPrice;
+      }
     }
     
     // Navigation
@@ -2587,6 +3255,20 @@
       // Add to cart
       const addCartBtn = card.querySelector('.add-cart');
       addCartBtn.addEventListener('click', () => {
+        // Check store hours
+        const now = new Date();
+        const hours = now.getHours();
+        const isOpen = hours >= 8 && hours < 21;
+        
+        if (!isOpen) {
+          if (hours < 8) {
+            showNotification('Toko belum buka. Silakan pesan kembali pukul 08.00 WIB', 'error');
+          } else {
+            showNotification('Toko sudah tutup. Silakan pesan kembali besok', 'error');
+          }
+          return;
+        }
+        
         // Check if variants are selected
         if (selectedVariantsMap[boxType].length === 0) {
           showNotification('Pilih minimal satu varian donat', 'error');
@@ -2603,7 +3285,14 @@
         
         // Prepare order data
         const quantity = parseInt(quantityDisplay.textContent);
-        const boxPrice = parseInt(boxPriceElement.textContent.replace('Rp ', '').replace('.', ''));
+        let boxPrice;
+        
+        // Check if discount is applied
+        if (card.dataset.discountPrice) {
+          boxPrice = parseInt(card.dataset.discountPrice);
+        } else {
+          boxPrice = parseInt(boxPriceElement.textContent.replace('Rp ', '').replace('.', ''));
+        }
         
         currentOrder = {
           boxType: card.querySelector('h3').textContent,
@@ -2628,6 +3317,20 @@
       // Buy now
       const buyNowBtn = card.querySelector('.buy-now');
       buyNowBtn.addEventListener('click', () => {
+        // Check store hours
+        const now = new Date();
+        const hours = now.getHours();
+        const isOpen = hours >= 8 && hours < 21;
+        
+        if (!isOpen) {
+          if (hours < 8) {
+            showNotification('Toko belum buka. Silakan pesan kembali pukul 08.00 WIB', 'error');
+          } else {
+            showNotification('Toko sudah tutup. Silakan pesan kembali besok', 'error');
+          }
+          return;
+        }
+        
         // Check if variants are selected
         if (selectedVariantsMap[boxType].length === 0) {
           showNotification('Pilih minimal satu varian donat', 'error');
@@ -2644,7 +3347,14 @@
         
         // Prepare order data
         const quantity = parseInt(quantityDisplay.textContent);
-        const boxPrice = parseInt(boxPriceElement.textContent.replace('Rp ', '').replace('.', ''));
+        let boxPrice;
+        
+        // Check if discount is applied
+        if (card.dataset.discountPrice) {
+          boxPrice = parseInt(card.dataset.discountPrice);
+        } else {
+          boxPrice = parseInt(boxPriceElement.textContent.replace('Rp ', '').replace('.', ''));
+        }
         
         currentOrder = {
           boxType: card.querySelector('h3').textContent,
@@ -2665,17 +3375,37 @@
       const baseCount = parseInt(card.dataset.baseCount);
       const basePrice = parseInt(card.dataset.basePrice);
       const unitPrice = parseInt(card.dataset.unitPrice);
+      const boxType = card.dataset.box;
       
       const newCount = baseCount * quantity;
-      const newPrice = basePrice * quantity;
+      let newPrice;
+      
+      // Check if discount is applied
+      if (card.dataset.discountPrice) {
+        const discountPrice = parseInt(card.dataset.discountPrice);
+        newPrice = discountPrice * quantity;
+      } else {
+        newPrice = basePrice * quantity;
+      }
       
       // Update display
       card.querySelector('.box-count').textContent = newCount;
-      card.querySelector('.box-price').textContent = `Rp ${newPrice.toLocaleString('id-ID')}`;
+      
+      // Update price display
+      const boxPriceElement = card.querySelector('.box-price');
+      if (card.dataset.discountPrice) {
+        const originalPrice = basePrice * quantity;
+        boxPriceElement.innerHTML = `
+          <span class="original-price">Rp ${originalPrice.toLocaleString('id-ID')}</span>
+          <span class="discount-price">Rp ${newPrice.toLocaleString('id-ID')}</span>
+        `;
+      } else {
+        boxPriceElement.textContent = `Rp ${newPrice.toLocaleString('id-ID')}`;
+      }
+      
       card.querySelector('.box-capacity').textContent = newCount;
       
       // Update variant count display
-      const boxType = card.dataset.box;
       const countElement = document.getElementById(`variant-count-${boxType}`);
       if (countElement) {
         countElement.textContent = selectedVariantsMap[boxType].reduce((sum, v) => sum + v.quantity, 0);
@@ -2802,6 +3532,43 @@
         answer.classList.toggle('active');
       });
     });
+    
+    // FAQ article links
+    document.querySelectorAll('.faq-article-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const articleId = link.dataset.article;
+        showArticle(articleId);
+      });
+    });
+    
+    // Show article
+    function showArticle(articleId) {
+      const article = articles[articleId];
+      
+      if (article) {
+        articleContainer.innerHTML = `
+          <div class="article-header">
+            <h2 class="article-title">${article.title}</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> ${article.date}</span>
+            </div>
+          </div>
+          <div class="article-content">
+            ${article.content}
+          </div>
+          <a href="#" class="back-to-faq" onclick="navigateTo('order'); return false;">
+            <i class="fas fa-arrow-left"></i> Kembali ke FAQ
+          </a>
+        `;
+        
+        // Navigate to article page
+        pages.forEach(page => {
+          page.classList.remove('active');
+        });
+        document.getElementById('article-page').classList.add('active');
+      }
+    }
     
     // Payment popup functionality
     function openPaymentPopup() {
@@ -3138,6 +3905,9 @@
       history.forEach((order, index) => {
         const date = new Date(order.date);
         const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        const formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+        const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const dayName = dayNames[date.getDay()];
         
         let variantsText = '';
         order.variants.forEach(variant => {
@@ -3149,7 +3919,10 @@
         historyCard.className = 'history-card';
         historyCard.innerHTML = `
           <div class="history-header">
-            <div class="history-date">${formattedDate}</div>
+            <div>
+              <div class="history-date">${formattedDate}</div>
+              <div class="history-time">${dayName}, ${formattedTime} WIB</div>
+            </div>
             <div class="history-status">${order.status}</div>
           </div>
           <div class="history-details">
@@ -3239,14 +4012,44 @@
       }
     });
     
-    function performSearch(query) {
+    // Search filter functionality
+    document.querySelectorAll('.search-filter').forEach(filter => {
+      filter.addEventListener('click', () => {
+        // Update active state
+        document.querySelectorAll('.search-filter').forEach(f => {
+          f.classList.remove('active');
+        });
+        filter.classList.add('active');
+        
+        // Get current search results
+        const query = searchInput.value.trim();
+        if (query) {
+          performSearch(query, filter.dataset.filter);
+        }
+      });
+    });
+    
+    function performSearch(query, filter = 'all') {
       // Navigate to search page
       navigateTo('search');
       
-      // Filter products based on query
-      const filteredProducts = products.filter(product => 
+      // Filter products based on query and filter
+      let filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(query.toLowerCase())
       );
+      
+      // Apply additional filter
+      if (filter !== 'all') {
+        if (filter === 'variant') {
+          filteredProducts = filteredProducts.filter(product => product.type === 'variant');
+        } else if (filter === 'box') {
+          filteredProducts = filteredProducts.filter(product => product.type === 'box');
+        } else if (filter === 'price-low') {
+          filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (filter === 'price-high') {
+          filteredProducts.sort((a, b) => b.price - a.price);
+        }
+      }
       
       // Update search results count
       searchResultsCount.textContent = `${filteredProducts.length} hasil ditemukan`;
@@ -3367,10 +4170,22 @@
       // Update cart badge
       updateCartBadge();
       
+      // Check store hours
+      checkStoreHours();
+      
+      // Initialize discount system
+      initDiscountSystem();
+      
       // Add event listener to order button in parallax
       document.querySelector('.order-btn').addEventListener('click', () => {
         document.querySelector('.box-selection').scrollIntoView({ behavior: 'smooth' });
       });
+      
+      // Check store hours every minute
+      setInterval(checkStoreHours, 60000);
+      
+      // Update discount every hour
+      setInterval(initDiscountSystem, 3600000);
     });
   </script>
 </body>
